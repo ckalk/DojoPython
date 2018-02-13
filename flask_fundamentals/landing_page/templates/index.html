@@ -1,0 +1,29 @@
+<!-- Assignment: Landing Page
+Create a flask project capable of handling the following routes.
+localhost:5000/    This route should serve a view file called index.html and display a greeting. This will be considered our 'root route'. -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts_landing.js') }}"></script>
+    <title>Welcome Page</title>
+</head>
+<body>
+    <div id="wrapper">
+        <img src="{{ url_for('static', filename='images/florida_beach.jpg') }}" alt="hero image - beach">
+        <h1>Welcome to This Landing Page Exercise!</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quia quod quos, dicta dolorum commodi corporis obcaecati sit possimus! Non iure incidunt voluptatem aspernatur obcaecati nisi blanditiis temporibus exercitationem nihil.
+        </p>
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure aliquam delectus. Alias, natus. Labore velit nihil iure cumque. Repudiandae quibusdam amet blanditiis porro fugit molestias. Corporis vel modi tenetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias amet sed quam earum eveniet nemo eligendi ab dolorum beatae dolor ullam ea voluptates debitis neque repellat veniam excepturi, nulla quos.</li>
+        </ul>
+        <div id="footer">
+            <hr>
+            <p>Created on Feb 13, 2018</p> 
+        </div>
+    </div>
+</body>
+</html>

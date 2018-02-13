@@ -5,12 +5,8 @@ app = Flask(__name__)                     # Global variable __name__ tells Flask
 @app.route('/')                           # The "@" symbol designates a "decorator" which attaches the
                                           # following function to the '/' route. This means that
                                           # whenever we send a request to localhost:5000/ we will run
-                                          # the following "hello_world" function.
-def hello_world():
-  return render_template('index.html', name="Cynthia")    # Render the template and return it!
-
-@app.route('/success')
-def success():
-  return render_template('success.html')
+                                          # the following "test_templates" function.
+def index():
+  return render_template('index.html', phrase="Hello There", times=7)    # Render the template and return it!
   
 app.run(debug=True) 

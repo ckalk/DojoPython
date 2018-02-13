@@ -1,0 +1,45 @@
+<!-- Assignment: Landing Page
+Create a flask project capable of handling the following:
+localhost:5000/dojos/new    This route should serve a view file called dojos.html and have a form. Don't worry where the form should be sent to for now, you can simply set your action blank, like this:action=''. -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dojos.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts_landing.js') }}"></script>
+    <title>Dojos Information</title>
+</head>
+<body>
+    <div id="wrapper">
+        <img src="{{ url_for('static', filename='images/oaks_hero.jpg') }}" alt="hero image - oaks">
+        <h1>Learn About Dojos!</h1>
+        <div class="about">
+            <h2>Dojos are NOT Ninjas</h2>
+            <img src="{{ url_for('static', filename='images/not_grp.jpg') }}" alt="hero image - oaks">
+        </div>
+
+        <div id="input-form">
+            <h2>Sign up for the latest info on Dojos!</h2>
+            <p>Become a Dojos Member</p>
+            <form id="new-member" action=''>
+                <label for="firstname">First Name:</label>
+                <input type="text" name="firstname" placeholder="Enter first name" size=40><br>
+                
+                <label for="lastname">Last Name:</label>
+                <input type="text" name="lastname" placeholder="Enter last name" size=40><br>
+                
+                <label for="email">Email:</label>
+                <input type="text" name="email" placeholder="Enter email address" size=40><br>
+                
+                <input type="submit" value="Make Me a Dojos Member!">
+            </form>
+        </div>
+        
+        <div id="footer">
+            <hr>
+            <p>Created on Feb 13, 2018</p> 
+        </div>
+    </div>
+</body>
+</html>

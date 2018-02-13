@@ -1,0 +1,37 @@
+<!-- Assignment: Landing Page
+Create a flask project capable of handling the following:
+localhost:5000/ninjas    This route should serve a view file called ninjas.html and display information about ninjas. -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ninjas.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts_landing.js') }}"></script>
+    <title>Ninjas Information</title>
+</head>
+<body>
+    <div id="wrapper">
+        <img src="{{ url_for('static', filename='images/grp_oak.jpg') }}" alt="hero image - oaks">
+        <h1>Learn About the Ninjas!</h1>
+        <div class="about">
+            <h2>Ninjas like to play!</h2>
+            <img src="{{ url_for('static', filename='images/grp_skipping.jpg') }}" alt="group skipping">
+        </div>
+        <div class="about">
+            <h2>Ninjas like to relax!</h2>
+            <img src="{{ url_for('static', filename='images/grp_rockers.jpg') }}" alt="group in rockers">
+        </div>
+        <div class="about">
+            <h2>Ninjas like to be silly!</h2>
+            <img src="{{ url_for('static', filename='images/grp_sunset.jpg') }}" alt="group on beach">
+        </div>
+        <div class="about">
+
+        <div id="footer">
+            <hr>
+            <p>Created on Feb 13, 2018</p> 
+        </div>
+    </div>
+</body>
+</html>

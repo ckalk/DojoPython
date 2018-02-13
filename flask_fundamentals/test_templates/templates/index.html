@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Testing Templates</title>
+</head>
+<body>
+    <h1>My first template with embedded python</h1>
+    <p>Phrase: {{phrase}}</p>
+    <p>Times: {{times}}</p>
+    {% for x in range(0,times) %}
+        <p>{{x}}: {{phrase}}</p>
+    {% endfor %}
+    <!-- here is an example of embedding an if statement in our code -->
+    {% if phrase == "Hello There" %}
+        <p>The phrase says hello there, but capitalized</p>
+    {% endif %}
+</body>
+</html>
