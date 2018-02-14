@@ -1,0 +1,24 @@
+<!-- Assignment: Counter
+Build a flask application that counts the number of times the root route ('/') has been viewed. 
+This assignment is to test your understanding of session.
+* Ninja Level 1: Add a +2 button underneath the counter that reloads the page and increments counter by 2. Add another route to handle this functionality.
+* Ninja Level 2: Add a reset button that resets the counter back to 1. Add another route to handle this functionality.  -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Counter</title>
+</head>
+<body>
+    <h1>Index Page</h1>
+    <h2>Count the Visits</h2>
+    <p>How many times have we already visited this page?</p>
+    <h2>{{session['cntr']}}</h2>
+    <hr>
+    <h2>Add another visit by clicking on Return</h2>
+    <form method="post" action="/addtocount">
+        <input type="submit" value="Return">
+    </form>
+</body>
+</html>

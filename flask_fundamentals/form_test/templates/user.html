@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Form Test Show</title>
+  </head>
+  <body>
+    <h1>Show User Info</h1>
+
+    {% if action == "registration" %}
+        <h2>Registration Data</h2>
+        <h3>{{session['first_name']}}</h3>
+        <h3>{{session['last_name']}}</h3>
+        <h3>{{session['password']}}</h3>
+        <h3>{{session['email']}}</h3>
+    {% elif action == "login" %}
+        <h2>Login Data</h2>
+        <h3>{{session['password']}}</h3>
+        <h3>{{session['email']}}</h3>
+    {% endif %}
+    </body>
+</html>

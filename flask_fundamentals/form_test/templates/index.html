@@ -4,12 +4,23 @@
     </head>
     <body>
       <h1>Index Page</h1>
-      <h3>Create a User</h3>
-      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
-      <form action='/users' method='post'>
-          Name: <input type='text' name='name'>
-          Email: <input type='text' name='email'>
-          <input type='submit' value='create_user'>
-      </form>
+      <h2>Create a User</h2>
+        <h3>Create An Account</h3>
+        <form method="post" action="/process">
+            <input type="hidden" name="action" value="register">
+            First Name: <input type="text" name="first_name">
+            Last Name: <input type="text" name="last_name">
+            Email: <input type="text" name="email">
+            Password: <input type="password" name="password"><br>
+            <input type="submit" value="Register">
+        </form>
+
+        <h3>Or if you already have an account, Log In</h3>
+        <form method="post" action="/process">
+            <input type="hidden" name="action" value="login">
+            Email: <input type="text" name="email">
+            Password: <input type="password" name="password"><br>
+            <input type="submit" value="Login">
+        </form>
     </body>
 </html>
