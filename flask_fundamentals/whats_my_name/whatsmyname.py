@@ -19,6 +19,7 @@ def process_data():
    name = request.form['name']
    email = request.form['email']
    print name, email
+   print request.form
 #    print request.form['name'], request.form['email'] find out why this doesn't work
    # redirects back to the '/' route
    return redirect('/')
