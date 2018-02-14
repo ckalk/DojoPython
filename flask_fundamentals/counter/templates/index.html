@@ -13,12 +13,22 @@ This assignment is to test your understanding of session.
 <body>
     <h1>Index Page</h1>
     <h2>Count the Visits</h2>
-    <p>How many times have we already visited this page?</p>
+    <p>What is the session counter now?</p>
     <h2>{{session['cntr']}}</h2>
     <hr>
     <h2>Add another visit by clicking on Return</h2>
     <form method="post" action="/addtocount">
         <input type="submit" value="Return">
+    </form>
+    <hr>
+    <h2>Add 2 visits by clicking on Add 2</h2>
+    <form method="post" action="/add2tocount">
+        <input type="submit" value="Add 2">
+    </form>
+    <hr>
+    <h2>Reset session counter to zero</h2>
+    <form method="post" action="/resetctr">
+        <input type="submit" value="Reset">
     </form>
 </body>
 </html>

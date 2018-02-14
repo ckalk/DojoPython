@@ -22,4 +22,18 @@ def count():
   print session['cntr']
   return redirect('/')
 
+@app.route('/add2tocount', methods=['POST'])
+def add2tocount():
+  print "Got Post Info"
+  session['cntr']+=2
+  print session['cntr']
+  return redirect('/')
+
+@app.route('/resetctr', methods=['POST'])
+def resetctr():
+  print "Got Post Info"
+  session['cntr'] = 0
+  print session['cntr']
+  return redirect('/')
+
 app.run(debug=True) # run our server
