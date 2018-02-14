@@ -1,0 +1,42 @@
+<!-- Assignment: Disappearing Ninja
+Build a flask application with the below functionality.
+    When user visits /ninja, it should display all four Ninja Turtles (Leonardo, Michelangelo, Raphael, and Donatello)
+    /ninja/[ninja_color], should display the corresponding Ninja Turtle (grab the color parameter out of the requested URL), If 
+    * /ninja/blue, it should only display the Ninja Turtle Leonardo.
+    * /ninja/orange - Ninja Turtle Michelangelo.
+    * /ninja/red - Ninja Turtle Raphael
+    * /ninja/purple - Ninja Turtle Donatello
+    * other than the colors (Blue, Orange, Red, and Purple), example: /ninja/black or /ninja/123, then display the image notapril.jpg -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/disappearing_ninjas.css')}}">
+    <title>Exercise: Disappearing Ninjas"</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Got to ninja page</h1>
+        <h2>with color = {{color}}</h2>
+        <div id="ninja">
+            {% if color == "blue" %}
+                <h3>Here is Ninja Turtle Leonardo!</h3>
+                <img src="{{url_for('static', filename='images/leonardo.jpg')}}" alt="Ninja Turtle Leonardo!">
+            {% elif color == "orange" %}
+                <h3>Here is Ninja Turtle Michelangelo!</h3>
+                <img src="{{url_for('static', filename='images/michelangelo.jpg')}}" alt="Ninja Turtle Michelangelo">
+            {% elif color == "red" %}
+                <h3>Here is Ninja Turtle Raphael!</h3>
+                <img src="{{url_for('static', filename='images/raphael.jpg')}}" alt="Ninja Turtle Raphael">
+            {% elif color == "purple" %}
+                <h3>Here is Ninja Turtle Donatello!</h3>
+                <img src="{{url_for('static', filename='images/donatello.jpg')}}" alt="Ninja Turtle Donatello">
+            {% else  %}
+                <h3>We do not have that Ninja Turtle!</h3>
+                <img src="{{url_for('static', filename='images/notapril.jpg')}}" alt="Not April">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

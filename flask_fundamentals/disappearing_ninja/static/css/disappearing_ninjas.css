@@ -1,0 +1,34 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+#wrapper {
+    width: 900px;
+    height: auto;
+    background-color: lightgray;
+    margin: 10px auto;
+    padding: 25px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+h1, h2 {
+    margin: 20px 8px;
+    }
+ 
+#ninja {
+    width: 50%;
+    margin-left: 25%;
+    height: auto;
+    padding: 20px 10px;
+    background-color: white;
+    box-shadow: 10px 10px 5px #888;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#ninja img {
+    width: 100%;
+}
+
