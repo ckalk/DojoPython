@@ -12,7 +12,7 @@ first = "true"
 @app.route('/')
 def index():
   if 'cntr' not in session:
-    session['cnty']=0
+    session['cntr']=0
   return render_template("index.html")
 
 @app.route('/addtocount', methods=['POST'])

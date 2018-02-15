@@ -8,22 +8,28 @@ In order to remove something from the session, you must "pop" it off of the sess
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/number_game.css')}}">
     <title>Great Number Game</title>
 </head>
 <body>
-    <h1>Guess the Number</h1>
+<div id="wrapper">
+    <h1>Welcome to the Great Number Game!</h1>
 
-    <h2>{{session['curr_random']}}</h2>
+    <p class="tiny">{{session['curr_random']}}</p>
     
-    <h2>Make your guess</h2>
-    <form method="post" action="/returnguess">
-        <label for="guess">Make Your Guess:</label>
-        <select name="guess" p>
-            {% for x in range(1,101) %}
-                <option guess={{x}}>{{x}}</option> 
-            {% endfor %}
-        <br>
-        <input type="submit" value="Choose This">
-    </form>
+    <h2>I am thinking of number between 1 and 100.</h2>
+    <h2>Take a guess.</h2>
+
+    <div id="guess">
+        <form method="post" action="/returnguess">
+            <select name="guess" p>
+                {% for x in range(1,101) %}
+                    <option guess={{x}}>{{x}}</option> 
+                {% endfor %}
+            <br>
+            <input type="submit" value="Choose This">
+        </form>
+    </div>
+</div>
 </body>
 </html>

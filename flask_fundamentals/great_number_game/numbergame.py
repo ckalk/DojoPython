@@ -11,6 +11,10 @@ import random
 
 @app.route('/')
 def index():
+    session['guess'] = 0
+    session['curr_random'] = 0
+    session.pop('guess')
+    session.pop('curr_random')
     session['curr_random'] = random.randint(1, 100)
     print  session['curr_random']
     return render_template("index.html")
@@ -23,11 +27,6 @@ def returnguess():
 
 @app.route('/correctguess', methods=['POST'])
 def correctguess():
-    print session
-    print request.form['playagain']
-    if request.form['playagain'] == 'yes':
-        return redirect('/')
-    else:
-        return render_template("gameover.html")
+    return redirect('/')
 
 app.run(debug=True) # run our server
