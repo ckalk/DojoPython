@@ -1,0 +1,29 @@
+<!-- Assignment: Great Number Game
+Create a site that when a user loads it creates a random number between 1-100 and stores the number in session. Allow the user to guess at the number and tell them when they are too high or too low. If they guess the correct number tell them and offer to play again.
+In order to generate a random number you can use the "random" python module:
+In order to remove something from the session, you must "pop" it off of the session dictionary.  -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Great Number Game</title>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+
+    <h2>{{session['curr_random']}}</h2>
+    
+    <h2>Make your guess</h2>
+    <form method="post" action="/returnguess">
+        <label for="guess">Make Your Guess:</label>
+        <select name="guess" p>
+            {% for x in range(1,101) %}
+                <option guess={{x}}>{{x}}</option> 
+            {% endfor %}
+        <br>
+        <input type="submit" value="Choose This">
+    </form>
+</body>
+</html>
