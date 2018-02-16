@@ -71,7 +71,7 @@ def validate():
     if len(birth_date) < 1:
         flash("You must enter a birth date.",'error')
     elif not DATE_REGEX.match(request.form['birth_date']):
-        flash("Invalid date format for birthdate -- must be yyyy-mm-dd.",'error')
+        flash("Invalid date for birthdate -- must be yyyy-mm-dd.",'error')
     elif birth_date >= today:
         flash("Your birth date must be in the past.",'error')
     
