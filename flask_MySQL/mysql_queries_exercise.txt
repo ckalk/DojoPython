@@ -1,0 +1,40 @@
+USE twitter;
+SELECT * 
+FROM users;
+SELECT * 
+FROM tweets LIMIT 10;
+
+INSERT INTO tweets (tweet, user_id) 
+VALUES('This is a new tweet coming to you from user_id 2', 2);
+SELECT * 
+FROM tweets  
+WHERE user_id = 2;
+
+UPDATE tweets SET created_at= '2018-02-19 11:50:00', updated_at= '2018-02-19 11:50:00' WHERE ISNULL(created_at) AND user_id=2;
+SELECT * 
+FROM tweets  WHERE user_id = 2;
+
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM tweets WHERE created_at= '2018-02-19 11:50:00';
+SELECT * 
+FROM tweets  WHERE user_id = 2;
+
+SELECT user_id, COUNT(id) AS numtweets
+FROM tweets
+GROUP BY user_id;
+
+SELECT DAYNAME(created_at) AS nameofday, COUNT(id) AS numtweets
+FROM tweets
+GROUP BY nameofday;
+
+SELECT first_name, last_name, count(tweets.id) AS num_tweets
+FROM users
+JOIN tweets
+ON tweets.user_id = users.id
+GROUP BY users.id;
+
+SELECT first_name, last_name, count(tweets.id) AS num_tweets
+FROM users
+LEFT JOIN tweets
+ON tweets.user_id = users.id
+GROUP BY users.id;
