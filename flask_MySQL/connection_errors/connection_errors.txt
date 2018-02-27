@@ -1,0 +1,47 @@
+Changed  'user': 'root' to  'user': ‘cindy’  in config = {  … }
+Got error # 1045:
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'cindy'@'localhost' (using password: YES)") (Background on this error at: http://sqlalche.me/e/e3q8)
+Fix: Supply correct username for logging in to sqlalchemy
+
+———————
+
+Changed   'password': ‘root’ to  'password': 'wrong_pwd'  in config = {  … }
+Got error # 1045:
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)") (Background on this error at: http://sqlalche.me/e/e3q8)
+Fix: Supply correct password for logging in to sqlalchemy
+
+________
+
+
+Commented out  'password': ‘root’ in config = {  … }
+Got error KeyError: 'password'
+  File "/Users/cindykalkomey/Desktop/python_stack/flask_MySQL/connection_errors/mysqlconnection.py", line 15, in __init__
+    DATABASE_URI = "mysql://{}:{}@127.0.0.1:{}/{}".format(config['user'], config['password'], config['port'], config['database'])
+KeyError: 'password'
+Fix: Include password key/value pair
+
+________
+
+
+Changed 'port': ‘3306’ to 'port': '9999'
+Got error # 2003
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1' (61)") (Background on this error at: http://sqlalche.me/e/e3q8)
+Fix: Supply the correct port number for connecting to mysql
+
+________
+
+Changed 'port': ‘3306’ to 'port': ’33AA’
+Got error:
+ValueError: invalid literal for int() with base 10: '33AA'
+Fix: Supply the correct numeric port number for connecting to mysql
+
+__________
+
+Commented out  'database': db  in config = {  … }
+Got error:
+    DATABASE_URI = "mysql://{}:{}@127.0.0.1:{}/{}".format(config['user'], config['password'], config['port'], config['database'])
+KeyError: 'database'
+Fix: Include database key/value pair
+
+_______
+
