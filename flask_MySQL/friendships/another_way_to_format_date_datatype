@@ -1,0 +1,11 @@
+from datetime import datetime
+
+
+''' @app.template_filter()
+def format_mm_dd(date): # date = datetime object.
+# I don't know how to get day as 1st, 2nd, ...
+    return date.strftime('%b %d')
+
+@app.template_filter()
+def format_yyyy(date): # date = datetime object.
+    return date.strftime('%Y') '''

@@ -1,0 +1,77 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+#wrapper {
+    width: 900px;
+    height: auto;
+    background-color: lightgrey;
+    margin: 10px auto;
+    padding: 25px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+h1, h2, p {
+    margin:20px;
+    }
+
+table {
+        width: 70%;
+        border-collapse: collapse;
+    }
+
+    th {
+        border: 1px solid #585858;
+        text-align: left;
+        background-color: lightslategray;
+        padding: 8px;
+    }
+    
+    td {
+        border: 1px solid #585858;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(odd) {
+        background-color: lightgray;
+    }
+
+    #new-friend, #login {
+        width: 50%;
+        height: auto;
+        padding: 20px 10px;
+        background-color: lightgray;
+        border: 2px solid black;
+        box-shadow: 10px 10px 5px #888;
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    #new-friend label, #login label {
+        font-weight: bold;
+        font-size: 12px;
+        padding: 1% 1%;
+        display:inline-block;
+    }
+    
+    #new-friend input[type="text"],
+    #login input[type="text"] {
+        padding: 5px 5px;
+        margin: 5px 0;
+        width: 50%;
+        box-sizing: border-box;
+    }
+    
+    #new-friend input[type="submit"], 
+    #login input[type="submit"] {
+        padding: 5px;
+        margin: 5px 0px 5px 100px;
+        background: linear-gradient(white, darkgrey);
+        box-shadow: 5px 5px 5px #888;
+        font-weight: bold;
+        font-size: 12px;
+        width: 150px;
+    }
