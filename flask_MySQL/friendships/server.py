@@ -6,7 +6,7 @@ mysql = MySQLConnector(app,'friendships')
 
 @app.route('/')
 def index():
-    # assuming want friends of user.id=1
+    # want friends of logged in user
     query = "SELECT friends.first_name AS friend_first_name, friends.last_name AS friend_last_name, friends.age AS friend_age, DATE_FORMAT(friendships.date_became_fr, '%b %D') AS mm_dd, YEAR(friendships.date_became_fr) AS yyyy FROM friendships LEFT JOIN users ON friendships.user_id = users.id LEFT JOIN users AS friends ON friends.id = friendships.friend_id WHERE friendships.user_id="+str(session['loggedin_id'])
     print query
     # define your query

@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_registration.css') }}">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h2>Get Registered</h2>
+        {% with errors = get_flashed_messages(category_filter=["regerror"]) %}
+            {% if errors %}
+                <div id="errors">
+                {%- for message in errors %}
+                    <p>{{message}}</p>
+                {% endfor -%}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <p>All fields are required (*)</p>
+        <form id="new-registrant" action="/validate_registration" method="post">
+            <label for="first_name">First Name *</label>
+            <input class="input" type="text" name="first_name" placeholder="Enter first name"><br>
+
+            <label for="last_name">Last Name *</label>
+            <input class="input" type="text" name="last_name" placeholder="Enter last name"><br>
+
+            <label for="email">Email *</label>
+            <input class="input" type="text" name="email" placeholder="Enter email address"><br> 
+
+            <label for="password">Password *</label>
+            <input class="input" type="text" name="password" placeholder="Enter password"><br> 
+
+            <label for="name">Confirm Password *</label>
+            <input class="input" type="text" name="confirm_pwd" placeholder="Re-enter password"><br>  
+
+            <input class="submit" type="submit" value="Register!">
+        </form>
+
+        <h2>OR ... <br>Sign In (if you have already registered)</h2>
+        {% with errors = get_flashed_messages(category_filter=["loginerror"]) %}
+            {% if errors %}
+                <div id="errors">
+                {%- for message in errors %}
+                    <p>{{message}}</p>
+                {% endfor -%}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <p>All fields are required (*)</p>
+        <form id="login" action="/validate_login" method="post">
+            <label for="email">Email *</label>
+            <input class="input" type="text" name="email" placeholder="Enter email address"><br> 
+
+            <label for="password">Password *</label>
+            <input class="input" type="text" name="password" placeholder="Enter password"><br> 
+
+            <input class="submit" type="submit" value="Sign In!">
+        </form>
+    </div>
+</body>
+</html>

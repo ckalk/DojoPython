@@ -1,0 +1,70 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+#wrapper {
+    width: 900px;
+    height: auto;
+    background-color: lightgray;
+    margin: 10px auto;
+    padding: 25px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+h1, h2, p {
+    margin: 15px;
+    text-align: center;
+    }
+
+#new-registrant, #login {
+    width: 50%;
+    margin-left: 25%;
+    height: auto;
+    padding: 20px 5px;
+    background-color: white;
+    box-shadow: 5px 5px 2px #888;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#new-registrant label, #login label {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 1% 0%;
+    width: 40%;
+    display:inline-block;
+}
+
+.input {
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.submit {
+    padding: 5px;
+    margin: 5% 0px 0px 40%;
+    background: lightskyblue;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100px;
+}
+
+#errors {
+    background-color: aliceblue;
+    border: 2px solid red;
+    width: 50%;
+    margin: 1% 25%;
+    height: auto;
+    padding: 5px 5px;
+    box-shadow: 5px 5px 5px #888;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#errors p {
+    color: red;
+    text-align: center;
+}
+
