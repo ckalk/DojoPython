@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/wall.css') }}">
+<title>Welcome To The Wall</title>
+</head>
+
+<body>
+    <div id="wrapper"> 
+    <div id="header">
+        <h1>Coding Dojo Wall</h1>
+        <p>{{name}} <a href="/logout">log off</a></p>
+    </div>
+
+    <hr>
+
+    {% if messages %}
+        {% for category, message in messages %}
+            <p class="{{ category}}">{{message}}</p> 
+        {% endfor %}
+    {% endif %} 
+
+    <div id="postmsg">
+        <form action="/postmsg" method="POST"> 
+            <label for="post-content">Post a message</label> 
+            <div class="form-group">
+            <textarea name="post-content" class="form-control" cols="125" rows="5"></textarea>
+            </div>
+            <input class="submit" type="submit" value="Post a message">
+        </form>
+    </div>
+
+    <div id="allposts">
+        {% if posts %}
+            {% for post in posts %}
+                <p class="post-info"> {{ post["full_name"] }} - {{ post["post_date"] }} </p> 
+                <p class = "post-msg"> {{ post["message"] }}</p>
+                {% if post["comments"] %}
+                    {% for cmnt in post["comments"] %}
+                        <p class="cmnt-info"> {{ cmnt["comment_name"] }} - {{ cmnt["comment_date"] }} </p> 
+                        <p class = "cmnt-msg"> {{ cmnt["comment"] }}</p>   
+                    {% endfor %}
+                {% endif %} 
+                <div id="postcmnt">
+                    <form action="/postcmnt/{{ post['id'] }}" method="POST"> 
+                        <label for="cmnt-content">Post a comment</label> 
+                        <div class="form-group">
+                            <textarea name="cmnt-content" class="form-control" cols="123" rows="4"></textarea>
+                        </div>
+                        <input class="submit" type="submit" value="Post a comment">
+                    </form>
+                </div>
+            {% endfor %}
+        {% endif %} 
+    </div>
+
+    </div>
+</body>
+</html>

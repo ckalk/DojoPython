@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/wall.css') }}">
+    <title>Login or Register for The Wall</title>
+</head>
+
+<body>
+    <div id="wrapper"> 
+    <h1>Welcome to The Wall</h1>
+    <hr>
+
+    {% if messages %}
+        {% for category, message in messages %}
+            <p class="{{ category}}">{{message}}</p> 
+        {% endfor %}
+    {% endif %} 
+
+    <h2>Register</h2> 
+    <form action="/register" method="POST"> 
+        <div class="form-group">
+            <label for="f_name">First Name</label> 
+            <input class="form-control" type="text" name="f_name" placeholder="First Name"> 
+        </div>
+        <div class="form-group">
+            <label for="l_name">Last Name</label> 
+            <input class="form-control" type="text" name="l_name" placeholder="Last Name"> 
+        </div>      
+        <div class="form-group">
+            <label for="email">Email</label> 
+            <input class="form-control" type="text" name="email" placeholder="Email"> 
+        </div> 
+        <div class="form-group">
+                <label for="password">Password</label> 
+                <input class="form-control" type="password" name="password" placeholder="Password"> 
+        </div>
+        <div class="form-group">
+                <label for="confirm_password">Confirm Password</label> 
+                <input class="form-control" type="password" name="confirm_password" placeholder="Enter password again"> 
+        </div> 
+
+        <input class="submit" type="submit" value="Register">
+    </form>
+
+    <h2>Sign In (if already registered)</h2> 
+    <form action="/login" method="POST">     
+        <div class="form-group">
+            <label for="email">Email</label> 
+            <input class="form-control" type="text" name="email" placeholder="Email"> 
+        </div> 
+        <div class="form-group">
+                <label for="password">Password</label> 
+                <input class="form-control" type="password" name="password" placeholder="Password"> 
+        </div>
+        <input class="submit" type="submit" value="Sign In">
+    </form>
+    </div>
+</body>
+</html>
