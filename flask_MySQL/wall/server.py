@@ -4,6 +4,8 @@ app = Flask(__name__)
 app.secret_key = 'KeepItSecretKeepItSafe'
 mysql = MySQLConnector(app,'wall')
 
+import datetime
+import time
 
 # the "md5" module will hash passwords
 import md5
@@ -160,13 +162,13 @@ def dashboard():
     query = "SELECT messages.id, messages.user_id, messages.message,CONCAT(users.first_name, ' ', users.last_name) AS full_name,  DATE_FORMAT(messages.created_at, '%M %D %Y') AS post_date FROM messages JOIN users ON users.id = messages.user_id ORDER BY messages.created_at DESC;"
 
     postslist = mysql.query_db(query)
-    print postslist
 
     for post in postslist:
         msg_id = post["id"]
         cmntslist = []
-        query = "SELECT comments.user_id, comments.comment AS comment, CONCAT(users.first_name, ' ', users.last_name) AS comment_name, DATE_FORMAT(comments.created_at, '%m %b %Y') AS comment_date FROM comments JOIN users ON users.id = comments.user_id WHERE comments.message_id="+str(msg_id)+" ORDER BY comments.created_at ASC;"
-        cmntslist = mysql.query_db(query)
+
+        query = "SELECT comments.user_id, comments.comment AS comment, CONCAT(users.first_name, ' ', users.last_name) AS comment_name, DATE_FORMAT(comments.created_at, '%m %b %Y') AS comment_date FROM comments JOIN users ON users.id = comments.user_id WHERE comments.message_id = :some_id ORDER BY comments.created_at ASC;"
+        cmntslist = mysql.query_db(query, {'some_id': msg_id})
 
         # create a dict in post to hold the list of comments
         post["comments"] = cmntslist
@@ -180,6 +182,11 @@ def dashboard():
 
 @app.route('/postmsg', methods=['POST'])
 def post_message():
+    # test to see that user is logged in
+    try:
+        test_user = get_user_from_id(session['id'])
+    except KeyError:
+        return redirect("/")
 
     errors = []
     flash_messages = []
@@ -211,6 +218,11 @@ def post_message():
 
 @app.route('/postcmnt/<msg_id>', methods=['POST'])
 def post_comment(msg_id):
+    # test to see that user is logged in
+    try:
+        test_user = get_user_from_id(session['id'])
+    except KeyError:
+        return redirect("/")
 
     errors = []
     flash_messages = []
@@ -238,6 +250,42 @@ def post_comment(msg_id):
 
     # flash success message and return to dashboard page
     flash("Successfully added your comment", "success")
+    return redirect("/dashboard")
+
+
+@app.route('/deletepost/<msg_id>')
+def delete_post(msg_id):
+
+    # test to see that user is logged in
+    try:
+        test_user = get_user_from_id(session['id'])
+    except KeyError:
+        return redirect("/")
+
+    # Do time calculation so can check if post was made within last 30 minutes
+    query = "SELECT created_at FROM messages WHERE id = :some_id"
+    post_date =  mysql.query_db(query, {'some_id': msg_id})
+    NOW = datetime.datetime.now()
+
+    # Convert to Unix timestamp
+    d1_ts = time.mktime(NOW.timetuple())
+    d2_ts = time.mktime(post_date[0]["created_at"].timetuple())
+    # They are now in seconds, subtract and then divide by 60 to get minutes.
+    elapsed = int(d1_ts - d2_ts) / 60
+
+    if elapsed > 30:
+        # flash error message and return to dashboard page
+        flash("Post is older than 30 minutes and so cannot be deleted", "error")
+        return redirect("/dashboard")
+
+    # Delete post and all of its comments
+    # Note: since comments.message_id (foreign key) is set to ON DELETE = Cascade, comments related to the post will be automatically deleted
+
+    query = "DELETE FROM messages WHERE id = :some_id"
+    mysql.query_db(query, {'some_id': msg_id})
+
+    # flash success message and return to dashboard page
+    flash("Successfully deleted your post", "success")
     return redirect("/dashboard")
 
 

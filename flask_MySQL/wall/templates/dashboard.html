@@ -35,14 +35,22 @@
     <div id="allposts">
         {% if posts %}
             {% for post in posts %}
-                <p class="post-info"> {{ post["full_name"] }} - {{ post["post_date"] }} </p> 
+
+                {% if post["user_id"] == session["id"] %}
+                    <p class="post-info"> {{ post["full_name"] }} - {{ post["post_date"] }}  <a href="/deletepost/{{ post['id'] }}"> delete post</a></p> 
+                {% else %}
+                    <p class="post-info"> {{ post["full_name"] }} - {{ post["post_date"] }} </p> 
+                {% endif %}
+
                 <p class = "post-msg"> {{ post["message"] }}</p>
+
                 {% if post["comments"] %}
                     {% for cmnt in post["comments"] %}
                         <p class="cmnt-info"> {{ cmnt["comment_name"] }} - {{ cmnt["comment_date"] }} </p> 
                         <p class = "cmnt-msg"> {{ cmnt["comment"] }}</p>   
                     {% endfor %}
                 {% endif %} 
+
                 <div id="postcmnt">
                     <form action="/postcmnt/{{ post['id'] }}" method="POST"> 
                         <label for="cmnt-content">Post a comment</label> 
