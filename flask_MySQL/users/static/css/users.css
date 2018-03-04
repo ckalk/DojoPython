@@ -1,0 +1,118 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+#wrapper {
+    width: 60%;
+    height: auto;
+    background-color: rgb(239, 239, 239);
+    margin: 10px auto;
+    padding: 25px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+#users {
+    width: 100%;
+    margin-bottom: 10px;
+    }
+    
+th, td {
+    text-align: left;
+    padding: 8px;
+    }
+    
+tr:nth-child(even){background-color:white;}
+    
+th {
+    background-color: #4CAF50;
+    color: white;
+    }
+
+.user_info {
+    font-size: medium;
+    margin: 10px 0px;
+}
+
+.links a {
+    font-size: medium;
+    margin: 30px 10px;
+}
+
+.submit {
+    margin: 1% 2%;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.form-group {
+    margin: 0.5% 2%;
+}
+
+.form-control {
+    margin: 0.5% 2%;
+}
+
+#postmsg .submit {
+    margin-left: 83%;
+    background-color: dodgerblue;
+    color: white;
+    font-size: small;
+    padding: 0.5%;
+    border: 1px solid black;
+}
+
+.post-info {
+    margin: 2% 0% 0.5% 0%;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.post-msg {
+    margin: 0% 0% 0% 2%;
+    font-size: small;
+}
+
+.cmnt-info {
+    margin: 2% 0% 0.5% 2%;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.cmnt-msg {
+    margin: 0% 0% 0% 2%;
+    font-size: small;
+}
+
+#postcmnt {
+    margin: 2% 0% 0% 2%;
+}
+
+#postcmnt label {
+    font-size: smaller;
+}
+
+#postcmnt .submit {
+    margin-left: 83%;
+    background-color: limegreen;
+    color: white;
+    font-size: smaller;
+    padding: 0.5%;
+    border: 1px solid black;
+}
+
+.success {
+    margin: 0.5% 5%;
+    font-size: small;
+    font-weight: bold;
+    color: green;
+}
+
+.error {
+    margin: 0.5% 5%;
+    font-size: small;
+    font-weight: bold;
+    color: red;
+}
+
