@@ -22,12 +22,11 @@ class Animal(object):
 # Attributes: default health of 150
 # Methods: 1) pet: increases health by 5
 class Dog(Animal):
-    def __init__(self, name, health):
+    def __init__(self, name, health=150):
         # use super to call the Animal __init__ method
         super(Dog, self).__init__(name, health) 
         #alternative way to initialize it
-        # Animal.__init__(self, name, health)
-        self.health = 150
+        # Animal.__init__(self, name, health=150)
     def pet(self):
         self.health+=5
         return self
@@ -36,9 +35,8 @@ class Dog(Animal):
 # Attributes: default health of 170
 # Methods: 1) fly: decreases health by 10; 2) display health: prints health by calling the parent method and prints "I am a Dragon"
 class Dragon(Animal):
-    def __init__(self, name, health):
+    def __init__(self, name, health=170):
         super(Dragon, self).__init__(name, health)
-        self.health = 170
     def fly(self):
         self.health-=10
         return self
