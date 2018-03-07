@@ -15,7 +15,7 @@ class Animal(object):
         self.health-=5
         return self
     def displayHealth(self):
-        print self.health
+        print self.name, self.health
         return self
 
 # * Create Dog Class: inherits everything from Animal
@@ -58,14 +58,14 @@ tiger = Animal("tiger", 10)
 tiger.displayHealth().walk().walk().walk().run().run().displayHealth()
 
 # * Have the Dog walk() three times, run() twice, pet() once, and have it displayHealth().
-golden = Dog("golden", 99)
+golden = Dog("golden")
 golden.displayHealth().walk().walk().walk().run().run().pet().displayHealth()
 
-scary = Dragon("scary", 50)
+scary = Dragon("scary")
 scary.displayHealth().fly().fly().walk().run().run().displayHealth()
 
 # Now try creating a new Animal and confirm that it can not call the pet() and fly() methods, and its displayHealth() is not saying 'this is a dragon!'. 
-calico = Cat("calico",300)
+calico = Cat("calico", 300)
 # calico.fly()
 # calico.pet()
 # calico.displayHealth()

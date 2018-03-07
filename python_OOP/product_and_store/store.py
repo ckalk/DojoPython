@@ -24,7 +24,6 @@ class Store(object):
         return self
 
 # remove_product: should remove a product according to the product name
-# add_product: remove a product to the store's product list
     def removeProduct(self, obs_product_name):
         #find array element containing object to be removed
 
