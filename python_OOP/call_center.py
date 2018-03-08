@@ -15,11 +15,14 @@ class Call(object):
         self.call_reason = call_reason
 # Methods:
 # 1) display: that prints all Call attributes.
+    def formatPhone(self, number): 
+        return "  Caller Phone: {ccode}({acode}){first_three}-{last_four}".format(ccode=number[0:2], acode=number[2:5], first_three=number[5:8], last_four=number[8:12])
+    
     def displayCallInfo(self):
         print "--- Call Info ---"
         print "  ID:", self.id
         print "  Caller Name:", self.caller_name
-        print "  Caller Phone:", str(self.caller_phone)[0:3]+"-"+str(self.caller_phone)[3:6]+"-"+str(self.caller_phone)[5:9]
+        print  Call.formatPhone(self, self.caller_phone)
         print "  Time of Call:", self.call_time
         print "  Reason for Call:", self.call_reason
         return self
@@ -95,13 +98,13 @@ calls = []
 newcenter = CallCenter(calls)
 
 #add calls to call center
-CallCenter.addCall(newcenter,"Cindy Kalkomey", 2147330702, "login error")
-CallCenter.addCall(newcenter,"Kurt Kalkomey", 2148348937, "data error")
-CallCenter.addCall(newcenter,"Chloe Kalkomey", 2149991111, "cat error")
-CallCenter.addCall(newcenter,"Maizie Kalkomey", 2148881111, "dog error")
-CallCenter.addCall(newcenter,"Zoe Kalkomey", 2147771111, "zoe error")
-CallCenter.addCall(newcenter,"Ann Thomas", 5176349888, "payment error")
-CallCenter.addCall(newcenter,"Terry Thomas", 2037673544, "casino error")
+CallCenter.addCall(newcenter,"Cindy Kalkomey", "+12147330702", "login error")
+CallCenter.addCall(newcenter,"Kurt Kalkomey", "+12148348937", "data error")
+CallCenter.addCall(newcenter,"Chloe Kalkomey", "+12149991111", "cat error")
+CallCenter.addCall(newcenter,"Maizie Kalkomey", "+12148881111", "dog error")
+CallCenter.addCall(newcenter,"Zoe Kalkomey", "+12147771111", "zoe error")
+CallCenter.addCall(newcenter,"Ann Thomas", "+15176349888", "payment error")
+CallCenter.addCall(newcenter,"Terry Thomas", "+12037673544", "casino error")
 
 #display queue
 CallCenter.queueInfo(newcenter)
