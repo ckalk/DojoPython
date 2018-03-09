@@ -1,0 +1,33 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* outline: dotted red; */
+}
+
+#wrapper {
+    width: 970px;
+    margin: 10px auto;
+    background: lightgray;
+}
+
+h1 {
+    width: 48%;
+    margin: 1%;
+    color: darkblue;
+}
+
+h2 {
+    width: 48%; 
+    font-size: 12pt;
+    text-align: right;
+}
+
+.time {
+    display: inline-block;
+    width: 48%; 
+    margin: 5%;
+    font-size: 14pt;
+    text-align: left;
+}
