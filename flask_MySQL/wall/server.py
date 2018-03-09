@@ -170,6 +170,9 @@ def dashboard():
         query = "SELECT comments.user_id, comments.comment AS comment, CONCAT(users.first_name, ' ', users.last_name) AS comment_name, DATE_FORMAT(comments.created_at, '%m %b %Y') AS comment_date FROM comments JOIN users ON users.id = comments.user_id WHERE comments.message_id = :some_id ORDER BY comments.created_at ASC;"
         cmntslist = mysql.query_db(query, {'some_id': msg_id})
 
+        print msg_id, "comments =", cmntslist
+        print "------------------------------"
+
         # create a dict in post to hold the list of comments
         post["comments"] = cmntslist
 

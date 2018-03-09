@@ -95,7 +95,7 @@ class Hospital(object):
             bed_taken = False
             for j in range(len(self.patients)):
                 if Patient.findByID(patient0, self.patients[j]).bed_num == str(i):
-                     bed_taken =  True
+                    bed_taken =  True
             if not bed_taken:
                 bed_num = str(i)
                 return bed_num
