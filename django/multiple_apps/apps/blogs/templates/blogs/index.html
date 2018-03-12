@@ -12,8 +12,10 @@
         <div id="wrapper">
             <h1>Hello World!</h1>
             <h2>{{email}} and {{name}}</h2>
+            <h3>This is a placeholder to later display all the list of blogs</h3>
             <form id="blog-form" action="create/" method="post">
                 {% csrf_token %}
+                <p>placeholder to display a new form to create a new blog</p>
                 Blog Name: <input type="text" name="name" placeholder="blog name">
                 <br>
                 Description: <textarea name="desc" placeholder="description"></textarea>

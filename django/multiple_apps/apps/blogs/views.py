@@ -33,9 +33,9 @@ def create(request):
         request.session['name'] = "test"
         print request.session['name']
         print "*"*50
-        return redirect(index)
+        return redirect("/blogs")
     else:
-        return redirect(index)
+        return redirect("/blogs")
 
 def show(request, number):
     response = "placeholder to display blog "+number
@@ -47,4 +47,4 @@ def edit(request, number):
     
 def destroy(request, number):
     print "placeholder to destroy blog "+number
-    return redirect(index)
+    return redirect("/blogs")
