@@ -1,0 +1,116 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+#wrapper {
+    width: 900px;
+    height: auto;
+    background-color: rgb(246, 247, 248);
+    margin: 10px auto;
+    padding: 10px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1, h2 {
+        margin: 20px 8px;
+        }
+
+    #new_word {
+        width: 350px;
+        height: auto;
+        display: inline-block;
+        vertical-align: top;
+        }
+
+    #new_word h2 {
+        font-size: 18px;
+    }
+
+    #new_word h3 {
+        font-size: 16px;
+        margin: 10px 0px 0px 8px;
+    }
+
+    input[type="text"] {
+        margin: 0px 0px 5px 15px;
+        padding: 5px;
+        width: 300px;
+        font-size: 12px;
+        border: 2px solid black;
+    }
+
+    #word input[type="submit"] {
+        padding: 5px;
+        margin: 10px 0px 0px 15px;
+        background-color: lightgreen;
+        box-shadow: 2px 2px 2px #888;
+        font-weight: bold;
+        font-size: 15px;
+        width: 150px;
+    }
+
+    #word input[type="radio"] {
+        margin: 5px 25px;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    #word input[type="checkbox"] {
+        margin: 20px 15px;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    #word_list {
+        width: 400px;
+        height: 400px;
+        border-left: 4px solid black;
+        margin: 5px;
+        padding: 20px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #word_list h3 {
+        margin-top: 25px;
+    }
+
+    #word_list li {
+        margin-left: 25px;
+    } 
+   
+    #word_list p {
+        margin: 10px;
+    }
+    #clear input[type="submit"] {
+        padding: 5px;
+        margin: 10px 0px 20px 300px;
+        background-color: lightgreen;
+        box-shadow: 2px 2px 2px #888;
+        font-weight: bold;
+        font-size: 15px;
+        width: 150px;
+    }
+
+    .bigger {
+        font-size: 25px;
+    }
+    
+    .normal {
+        font-size: 12px;
+    }
+
+    .red {
+        color: red;
+    }
+    
+    .green {
+        color: green;
+    }
+    
+    .blue {
+        color: blue;
+    }
+

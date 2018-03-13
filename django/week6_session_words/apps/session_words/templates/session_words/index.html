@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Words</title>
+    {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'session_words/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Django Exercise: Session Words</h1>
+        <div id="new_word">
+            <h2>Add a New Word</h2>
+            <form id="word" action="/session_words/add_word/" method="post">
+                {% csrf_token %}
+                <input type="text" name="word">
+                <br>
+                <h3>Choose color</h3>
+                <label><input type="radio" name="color" value="red"> Red</label>
+                <br>
+                <label><input type="radio" name="color" value="green"> Green</label>
+                <br>
+                <label><input type="radio" name="color" value="blue"> Blue</label>
+                <br> <br>
+                <label>
+                <input type="checkbox" name="font_sz" value="bigger"> show in BIG fonts!</label>
+                <br>
+                <input type="submit" value="Add to Session"><br>
+            </form>
+        </div>
+        <div id="word_list">
+            <form id="clear" action="/session_words/clear/" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Clear Session"><br>
+            </form>
+            {% for w in request.session.words %}
+                <p><span class="{{ w.color }} {{ w.font }}">{{ w.word }}</span> - added on {{ w.date }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
