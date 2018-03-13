@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'surveys/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>Result of Dojo Survey</title>
+</head>
+<body>
+<div id="wrapper">
+    <div id="results">
+        <table id='dojo_info'>
+            <caption>Submitted Information</caption>
+            <tr>
+                <th scope="row">Name:</th>
+                <td>{{ result_name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Location:</th>
+                <td>{{ result_loc }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Favorite Language:</th>
+                <td>{{ result_lang }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Comment:</th>
+                <td>{{ result_cmnt }}</td>
+            </tr>
+        </table>
+        <div id=validation>
+            <h2>Validation Results</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+        <a href="/" class="button gradientblue"> Go Back</a>
+    </div>
+</div>
+</body>
+</html>
