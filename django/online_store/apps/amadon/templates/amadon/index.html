@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- or link to my own css file  -->
+    <!-- {% load static %} -->
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <!-- <link rel="stylesheet" href="{% static 'amadon/css/styles.css' %}" media="screen" title="no title"  charset="utf-8"> -->
+
+    <title>Amadon Store</title>
+</head>
+<body>
+    <div id="wrapper">
+    <h1 class="ml-3">Amadon Store</h1>
+    <table class="ml-3 table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--  use session.products list of dicts here  and loop through list to create rows-->
+        {% for item in request.session.products %}
+            <tr>
+                <td>{{ item.prod_name }}</td>
+                <td>${{ item.prod_price }}</td>
+                <td>
+                    <form action="/amadon/buy/{{ item.prod_id }}/" method="post">
+                    {% csrf_token %}
+                    <select name="prod_qty" class="selectpicker show-tick">
+                        <optgroup >
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </optgroup>
+                        <input class="ml-2" type="submit" value="Buy!">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+#wrapper {
+    width: 900px;
+    height: auto;
+    background-color: rgb(246, 247, 248);
+    margin: 10px auto;
+    padding: 10px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    }
