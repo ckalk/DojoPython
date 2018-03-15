@@ -56,10 +56,12 @@ h1 {
 
 #events {
     width: 90%;
+    height: 100px;
     font-size: 10px;
     margin: 2% 2%;
+    padding: 1% 1%;
     background-color: white;
-    overflow: scroll;
+    overflow-y: auto;
 }
 
 input[type="submit"] {
@@ -77,7 +79,7 @@ input[type="submit"] {
     margin: 2% 40%;
     width: 200px;
 }
-/* not able to be used to style text in textarea */
+
 .red {
     color: red;
 }

@@ -54,12 +54,11 @@
     </div>
     <div id="activities">
         <p>Activities</p>
-        <!-- Note: I can't use my color class inside this textarea, but decided better to have the scrolling textbox than color -->
-        <textarea id="events" rows=6>
+        <div id="events">
             {% for event in activities %}
-               {{ event.msg }}
+               <p class="{{ event.color }}">{{ event.msg }}</p>
             {% endfor %}
-        </textarea>
+        </div>
     </div>
     <div id="reset">
         <form action="/reset" method="post">
