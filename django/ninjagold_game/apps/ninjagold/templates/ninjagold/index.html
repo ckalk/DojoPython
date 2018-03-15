@@ -1,0 +1,72 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'ninjagold/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+
+    <title>Ninja Gold Game</title>
+</head>
+<body>
+<div id="wrapper">
+
+    <h1>Ninja Gold Game</h1>
+    <div id="score">
+        <p>Your Gold:</p>
+        <textarea>{{ yourgold }} </textarea>
+    </div>
+    <div id="earngold">
+        <div class="place">
+            <h2>Farm</h2>
+            <p>Earns 10-20 golds</p>
+            <form action="/process_money/farm" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+        <div class="place">
+            <h2>Cave</h2>
+            <p>Earns 5-10 golds</p>
+            <form action="/process_money/cave" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+        <div class="place">
+            <h2>House</h2>
+            <p>Earns 2-5 golds</p>
+            <form action="/process_money/house" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+        <div class="place">
+            <h2>Casino</h2>
+            <p>Earns or LOSES 0-50 golds</p>
+            <form action="/process_money/casino" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+    </div>
+    <div id="activities">
+        <p>Activities</p>
+        <!-- Note: I can't use my color class inside this textarea, but decided better to have the scrolling textbox than color -->
+        <textarea id="events" rows=6>
+            {% for event in activities %}
+               {{ event.msg }}
+            {% endfor %}
+        </textarea>
+    </div>
+    <div id="reset">
+        <form action="/reset" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Reset Game"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
