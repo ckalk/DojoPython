@@ -1,0 +1,116 @@
+(djangoEnv) Cindys-MBP:users_assignment cindykalkomey$ python manage.py shell
+Python 2.7.14 (default, Jan  6 2018, 12:12:40) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.user_login.models import *
+>>> User.objects.create(first_name="Cindy", last_name="Kalk", email_address="cindy@test.com", age=99)
+<User: User object>
+>>> User.objects.create(first_name="Kurt", last_name="Kalk", email_address="kurt@test.com", age=59)
+<User: User object>
+>>> User.objects.all()
+<QuerySet [<User: User object>, <User: User object>]>
+>>> User.objects.create(first_name="Chloe", last_name="Kalk", email_address="chloe@test.com", age=19)
+<User: User object>
+>>> User.objects.create(first_name="Zoe", last_name="Kalk", email_address="zoe@test.com", age=13)
+<User: User object>
+>>> User.objects.create(first_name="Maisie", last_name="Kalk", email_address="maisie@test.com", age=10)
+<User: User object>
+>>> User.objects.all()
+<QuerySet [<User: User object>, <User: User object>, <User: User object>, <User: User object>, <User: User object>]>
+>>> User.objects.first()
+<User: User object>
+
+>>> User.objects.first().id
+1
+>>> User.objects.first().first_name
+u'Cindy'
+>>> User.objects.last().first_name
+u'Maisie'
+
+>>> User.objects.order_by("first_name").values()
+<QuerySet [{'first_name': u'Chloe', 'last_name': u'Kalk', 'created_at': datetime.datetime(2018, 3, 15, 18, 34, 10, 948802, tzinfo=<UTC>), 'updated_at': datetime.datetime(2018, 3, 15, 18, 34, 10, 948864, tzinfo=<UTC>), u'id': 3, 'email_address': u'chloe@test.com', 'age': 19}, {'first_name': u'Cindy', 'last_name': u'Kalk', 'created_at': datetime.datetime(2018, 3, 15, 18, 32, 18, 682214, tzinfo=<UTC>), 'updated_at': datetime.datetime(2018, 3, 15, 18, 32, 18, 682467, tzinfo=<UTC>), u'id': 1, 'email_address': u'cindy@test.com', 'age': 99}, {'first_name': u'Kurt', 'last_name': u'Kalk', 'created_at': datetime.datetime(2018, 3, 15, 18, 32, 43, 489949, tzinfo=<UTC>), 'updated_at': datetime.datetime(2018, 3, 15, 18, 32, 43, 490011, tzinfo=<UTC>), u'id': 2, 'email_address': u'kurt@test.com', 'age': 59}, {'first_name': u'Maisie', 'last_name': u'Kalk', 'created_at': datetime.datetime(2018, 3, 15, 18, 35, 21, 85380, tzinfo=<UTC>), 'updated_at': datetime.datetime(2018, 3, 15, 18, 35, 21, 85443, tzinfo=<UTC>), u'id': 5, 'email_address': u'maisie@test.com', 'age': 10}, {'first_name': u'Zoe', 'last_name': u'Kalk', 'created_at': datetime.datetime(2018, 3, 15, 18, 34, 53, 666239, tzinfo=<UTC>), 'updated_at': datetime.datetime(2018, 3, 15, 18, 34, 53, 666408, tzinfo=<UTC>), u'id': 4, 'email_address': u'zoe@test.com', 'age': 13}]>
+
+
+>>> set = User.objects.order_by("first_name").values()
+
+>>> for item in set:               
+...      print item.values()
+
+[u'Chloe', u'Kalk', datetime.datetime(2018, 3, 15, 18, 34, 10, 948802, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 34, 10, 948864, tzinfo=<UTC>), 3, u'chloe@test.com', 19]
+[u'Cindy', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 18, 682214, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 18, 682467, tzinfo=<UTC>), 1, u'cindy@test.com', 99]
+[u'Kurt', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 43, 489949, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 43, 490011, tzinfo=<UTC>), 2, u'kurt@test.com', 59]
+[u'Maisie', u'Kalk', datetime.datetime(2018, 3, 15, 18, 35, 21, 85380, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 35, 21, 85443, tzinfo=<UTC>), 5, u'maisie@test.com', 10]
+[u'Zoe', u'Kalk', datetime.datetime(2018, 3, 15, 18, 34, 53, 666239, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 34, 53, 666408, tzinfo=<UTC>), 4, u'zoe@test.com', 13]
+
+
+>>> set = User.objects.order_by("-first_name").values()
+>>> for item in set:
+...      print item.values()
+... 
+[u'Zoe', u'Kalk', datetime.datetime(2018, 3, 15, 18, 34, 53, 666239, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 34, 53, 666408, tzinfo=<UTC>), 4, u'zoe@test.com', 13]
+[u'Maisie', u'Kalk', datetime.datetime(2018, 3, 15, 18, 35, 21, 85380, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 35, 21, 85443, tzinfo=<UTC>), 5, u'maisie@test.com', 10]
+[u'Kurt', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 43, 489949, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 43, 490011, tzinfo=<UTC>), 2, u'kurt@test.com', 59]
+[u'Cindy', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 18, 682214, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 18, 682467, tzinfo=<UTC>), 1, u'cindy@test.com', 99]
+[u'Chloe', u'Kalk', datetime.datetime(2018, 3, 15, 18, 34, 10, 948802, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 34, 10, 948864, tzinfo=<UTC>), 3, u'chloe@test.com', 19]
+
+>>> u= User.objects.get(id=3)
+>>> u.last_name="Thomas"
+>>> u.save()
+
+>>> set = User.objects.order_by("-first_name").values()
+>>> for item in set:
+...      print item.values()
+... 
+[u'Zoe', u'Kalk', datetime.datetime(2018, 3, 15, 18, 34, 53, 666239, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 34, 53, 666408, tzinfo=<UTC>), 4, u'zoe@test.com', 13]
+[u'Maisie', u'Kalk', datetime.datetime(2018, 3, 15, 18, 35, 21, 85380, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 35, 21, 85443, tzinfo=<UTC>), 5, u'maisie@test.com', 10]
+[u'Kurt', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 43, 489949, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 43, 490011, tzinfo=<UTC>), 2, u'kurt@test.com', 59]
+[u'Cindy', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 18, 682214, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 18, 682467, tzinfo=<UTC>), 1, u'cindy@test.com', 99]
+[u'Chloe', u'Thomas', datetime.datetime(2018, 3, 15, 18, 34, 10, 948802, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 19, 13, 45, 167469, tzinfo=<UTC>), 3, u'chloe@test.com', 19]
+
+>>> User.objects.get(id=3).last_name
+u'Thomas'
+
+>>> User.objects.get(id=4).delete()
+(1, {u'user_login.User': 1})
+>>> set = User.objects.order_by("-first_name").values()
+>>> for item in set:
+...      print item.values()
+... 
+[u'Maisie', u'Kalk', datetime.datetime(2018, 3, 15, 18, 35, 21, 85380, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 35, 21, 85443, tzinfo=<UTC>), 5, u'maisie@test.com', 10]
+[u'Kurt', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 43, 489949, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 43, 490011, tzinfo=<UTC>), 2, u'kurt@test.com', 59]
+[u'Cindy', u'Kalk', datetime.datetime(2018, 3, 15, 18, 32, 18, 682214, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 18, 32, 18, 682467, tzinfo=<UTC>), 1, u'cindy@test.com', 99]
+[u'Chloe', u'Thomas', datetime.datetime(2018, 3, 15, 18, 34, 10, 948802, tzinfo=<UTC>), datetime.datetime(2018, 3, 15, 19, 13, 45, 167469, tzinfo=<UTC>), 3, u'chloe@test.com', 19]
+
+
+>>> for user in User.objects.all():
+...     print len(user.first_name)
+... 
+5
+4
+5
+6
+ 
+>>> u= User.objects.get(id=3)
+>>> u.first_name = "C"
+>>> u.save()
+
+>>> u= User.objects.get(id=5)
+>>> u.last_name = "Z"
+>>> u.save()
+
+
+>>> for user in User.objects.all():
+...     if len(user.first_name) < 2: print "id=", user.id, "First name does not have at least 2 characters"
+...     if len(user.last_name) < 2: print "id=", user.id, "Last name does not have at least 2 characters"
+... 
+id= 3 First name does not have at least 2 characters
+id= 5 Last name does not have at least 2 characters
+
+
+>>> set = User.objects.filter(email_address="chloe@test.com") 
+>>> if set == None: print "chloe@test.com does not already exist"
+... else: print "chloe@test.com already in database"
+... 
+chloe@test.com already in database
+>>>
