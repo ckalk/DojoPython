@@ -1,0 +1,124 @@
+
+(djangoEnv) Cindys-MBP:dojo_ninjas_assignment cindykalkomey$ python manage.py shell
+>>> from apps.book_authors.models import *
+>>> Book.objects.create(name="C Sharp", desc="all about C Sharp")
+<Book: C Sharp all about C Sharp>
+>>> Book.objects.create(name="Java", desc="all about Java")
+<Book: Java all about Java>
+>>> Book.objects.create(name="Python", desc="all about Python")
+<Book: Python all about Python>
+>>> Book.objects.create(name="PHP", desc="all about PHP")
+<Book: PHP all about PHP>
+>>> Book.objects.create(name="Ruby", desc="all about Ruby")
+<Book: Ruby all about Ruby>
+>>> Author.objects.create(first_name="Mike")
+<Author: Mike  >
+>>> Author.objects.create(first_name="Speros")
+<Author: Speros  >
+>>> Author.objects.create(first_name="John")
+<Author: John  >
+>>> Author.objects.create(first_name="Jadee")
+<Author: Jadee  >
+>>> Author.objects.create(first_name="Jay")
+<Author: Jay  >
+>(djangoEnv) Cindys-MBP:dojo_ninjas_assignment cindykalkomey$ python manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> Null
+Invalid input: name 'Null' is not defined
+>>> 'Null'
+Migrations for 'book_authors':
+  apps/book_authors/migrations/0002_author_notes.py:
+    - Add field notes to author
+(djangoEnv) Cindys-MBP:dojo_ninjas_assignment cindykalkomey$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, book_authors, contenttypes, dojo_ninjas, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying book_authors.0002_author_notes... OK
+>>> Book.objects.all()
+<QuerySet [<Book: C Sharp all about C Sharp>, <Book: Java all about Java>, <Book: Python all about Python>, <Book: PHP all about PHP>, <Book: Ruby all about Ruby>]>
+>>> Book.objects.get(id=5)
+<Book: Ruby all about Ruby>
+>> Book.objects.get(id=1),author=Author.objects.get(id=1)
+  File "<console>", line 1
+SyntaxError: can't assign to function call
+>>> Author.objects.get(id=1).books.add(Book.objects.get(id=1))
+>>> Author.objects.get(id=1).books.add(Book.objects.get(id=2))
+>>> Author.objects.get(id=2).books.add(Book.objects.get(id=1))
+>>> Author.objects.get(id=2).books.add(Book.objects.get(id=2))
+>>> Author.objects.get(id=2).books.add(Book.objects.get(id=3))
+>>> Author.objects.get(id=3).books.add(Book.objects.get(id=1))
+>>> Author.objects.get(id=3).books.add(Book.objects.get(id=2))
+>>> Author.objects.get(id=3).books.add(Book.objects.get(id=3))
+>>> Author.objects.get(id=3).books.add(Book.objects.get(id=4))
+>>> Author.objects.get(id=4).books.add(Book.objects.get(id=1))
+>>> Author.objects.get(id=4).books.add(Book.objects.get(id=2))
+>>> Author.objects.get(id=4).books.add(Book.objects.get(id=3))
+>>> Author.objects.get(id=4).books.add(Book.objects.get(id=4))
+>>> Author.objects.get(id=4).books.add(Book.objects.get(id=5))
+>>> Book.objects.get(id=3).authors.all()
+<QuerySet [<Author: Speros  >, <Author: John  >, <Author: Jadee  >]>
+>>> Author.objects.get(id=1)
+<Author: Mike  >
+>>> Author.objects.get(id=2)
+<Author: Speros  >
+>>> Author.objects.get(id=3)
+<Author: John  >
+>>> Author.objects.get(id=4)
+<Author: Jadee  >
+>>> Author.objects.get(id=5)
+<Author: Jay  >
+
+>>> a = Author.objects.get(id=5)
+>>> a.first_name = "Ketul"
+>>> a.save()
+>>> Author.objects.get(id=5)
+<Author: Ketul  >
+>>> b = Book.objects.get(id=5)
+>>> b.name = "C#"
+>>> b.desc = "all about C#"
+>>> b.save()
+>>> Book.objects.get(id=5)
+<Book: C# all about C#>
+>>> Author.objects.get(id=4).books.all()
+<QuerySet [<Book: C Sharp all about C Sharp>, <Book: Java all about Java>, <Book: Python all about Python>, <Book: PHP all about PHP>, <Book: C# all about C#>]>
+>>> Author.objects.get(id=3).books.all()
+<QuerySet [<Book: C Sharp all about C Sharp>, <Book: Java all about Java>, <Book: Python all about Python>, <Book: PHP all about PHP>]>
+>>> Author.objects.get(id=2).books.all()
+<QuerySet [<Book: C Sharp all about C Sharp>, <Book: Java all about Java>, <Book: Python all about Python>]>
+>>> Author.objects.get(id=1).books.all()
+<QuerySet [<Book: C Sharp all about C Sharp>, <Book: Java all about Java>]>
+>>> Book.objects.get(id=1).authors.all()
+<QuerySet [<Author: Mike  >, <Author: Speros  >, <Author: John  >, <Author: Jadee  >]>
+>>> Book.objects.get(id=3).authors.all()
+<QuerySet [<Author: Speros  >, <Author: John  >, <Author: Jadee  >]>
+>>> Book.objects.get(id=1).authors.all()
+<QuerySet [<Author: Mike  >, <Author: Speros  >, <Author: John  >, <Author: Jadee  >]>
+>>> Book.objects.get(id=5).authors.all()
+<QuerySet [<Author: Jadee  >]>
+>>> Book.objects.get(id=3).authors.all()
+<QuerySet [<Author: Speros  >, <Author: John  >, <Author: Jadee  >]>
+>>> b=Book.objects.get(id=3)
+>>> a=Author.objects.get(id=1)
+>>> b.authors.remove(a)
+>>> b.authors.all()
+<QuerySet [<Author: John  >, <Author: Jadee  >]>
+>>> b.save()
+>>> b = Book.objects.get(id=2)
+>>> a = Author.objects.get(id=5)
+>>> b.authors.add(a)
+>>> b.authors.all()
+<QuerySet [<Author: Mike  >, <Author: Speros  >, <Author: John  >, <Author: Jadee  >, <Author: Ketul  >]>
+>>> b.save()
+>>> Author.objects.get(id=3).books.all()
+<QuerySet [<Book: C Sharp all about C Sharp>, <Book: Java all about Java>, <Book: Python all about Python>, <Book: PHP all about PHP>]>
+>>> Author.objects.get(id=2).books.all()
+<QuerySet [<Book: C Sharp all about C Sharp>, <Book: Java all about Java>]>
+>>> Author.objects.get(id=2).books.all()
