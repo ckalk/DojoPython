@@ -1,5 +1,3 @@
-
-
 from django.shortcuts import render, redirect
 from .models import League, Team, Player
 from django.db.models import Count
@@ -109,7 +107,8 @@ def query(request, number):
 	# 16. Find all players with first name "Alexander" OR first name "Wyatt" | Wyatt Bell, Alexander Bailey, Wyatt Peterson, Alexander Wright, Wyatt Alexander, Wyatt Bennett, Alexander Parker, Alexander Adams, Alexander Walker, Alexander Flores, Alexander Cooper
 	elif number == "16":
 		context = {
-			"players": Player.objects.filter(first_name="Alexander") | Player.objects.filter(first_name="Wyatt")
+			# "players": Player.objects.filter(first_name="Alexander") | Player.objects.filter(first_name="Wyatt")
+			"players": Player.objects.filter(first_name__in=["Alexander","Wyatt"])
 		}
 
 	return render(request, "leagues/index.html", context)
@@ -130,7 +129,7 @@ def queryII(request, number):
 	# 2. Find all (current) players on the Boston Penguins | Landon Hernandez, Wyatt Bennett, David Sanchez
 	if number == "2":
 		context = {
-			"players": Player.objects.filter(curr_team__team_name="Penguins") & Player.objects.filter(curr_team__location="Boston")
+			"players": Player.objects.filter(curr_team__team_name="Penguins", curr_team__location="Boston")
 		}
 
 	# 3. Find all (current) players in the International Collegiate Baseball Conference | Michael Flores, Abigail Foster, Ryan Phillips, Elijah Powell, Isaac Perry, Charlotte Jones, Sophia Rivera, Isabella Griffin, Landon Cooper, Elijah James, Abigail Davis, Wyatt Alexander, Abigail Richardson, Jacob Jenkins, Landon Gray, Levi Miller, Joshua Long, Nathan Mitchell, James Ramirez, Samuel Evans, John Edwards, Henry Martin, Andrew Adams, Joshua White, Alexander Flores, Abigail Hernandez, Caleb Parker, Joshua Smith, Jack Phillips
@@ -166,7 +165,8 @@ def queryII(request, number):
 	# 8. Find everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders | Michael Flores, Alexander Flores, Nathan Flores
 	if number == "8":
 		context = {
-			"players":Player.objects.exclude(curr_team__team_name="Roughriders").filter(last_name="Flores") | Player.objects.exclude(curr_team__location="Washington").filter(last_name="Flores")
+			# "players":Player.objects.exclude(curr_team__team_name="Roughriders").filter(last_name="Flores") | Player.objects.exclude(curr_team__location="Washington").filter(last_name="Flores")
+			"players":Player.objects.exclude(curr_team__team_name="Roughriders", curr_team__location="Washington").filter(last_name="Flores")
 		}
 
 	return render(request, "leagues/index.html", context)
@@ -190,7 +190,8 @@ def queryIII(request, number):
 	# 3. Find all players who were formerly (but aren't currently) with the Wichita Vikings | Dylan Rodriguez, Aiden Rivera, Ava Henderson, Nathan Brooks, Daniel Martinez, Ryan Peterson, Charlotte Harris, Noah Brooks, Levi Howard, Christopher Sanders
 	if number == "3":
 		context = {
-			"players": Player.objects.filter(all_teams__team_name="Vikings").exclude(curr_team__team_name="Vikings") &  Player.objects.filter(all_teams__location="Wichita").exclude(curr_team__location="Wichita")
+			# "players": Player.objects.filter(all_teams__team_name="Vikings").exclude(curr_team__team_name="Vikings") &  Player.objects.filter(all_teams__location="Wichita").exclude(curr_team__location="Wichita")
+			"players": Player.objects.filter(all_teams__team_name="Vikings").exclude(curr_team__team_name="Vikings").filter(all_teams__location="Wichita").exclude(curr_team__location="Wichita")
 		}
 
 	# 4. Find every team that Jacob Gray played for before he joined the Oregon Colts | Puerto Rico Breakers, Toronto Kings, Ontario Gunslingers
