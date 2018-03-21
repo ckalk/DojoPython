@@ -1,7 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
 
-from django.contrib import messages
-
 # import object Class(es) from models.py
 from .models import User
 
@@ -29,7 +27,7 @@ def create(request):
     if len(errors):
         for tag, error in errors.iteritems():
             messages.error(request, error, extra_tags=tag)
-            return redirect('/users/new')
+        return redirect('/users/new')
 
     else:
         fname = request.POST['fname']

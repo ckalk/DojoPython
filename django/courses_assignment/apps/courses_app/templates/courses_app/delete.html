@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Delete a Course</title>
+</head>
+
+<body>
+    <div class="container">
+    
+        <h2 class="ml-3">Are you sure you want to delete the following course ({{ course.id }})?</h2>
+
+        <ul class="list-group">
+            <li class="list-group-item">Name: {{ course.name }}</li>
+            <li class="list-group-item">Description: {{ course.desc }}</li>
+            <li class="list-group-item">Date Added: {{ course.created_at }}</li>
+        </ul>
+        <a class="btn btn-primary btn-sm mt-3 btn-secondary" href="{%url 'courses:my_index' %}">No</a> 
+        <a class="btn btn-primary btn-sm mt-3 btn-danger" href="{%url 'courses:my_destroy' course.id %}">Yes! I want to delete this</a>
+
+    </div>
+
+<!-- Optional JavaScript for bootstrap would go here-->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+</body>
+</html>
