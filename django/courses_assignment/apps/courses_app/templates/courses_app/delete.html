@@ -18,7 +18,7 @@
 
         <ul class="list-group">
             <li class="list-group-item">Name: {{ course.name }}</li>
-            <li class="list-group-item">Description: {{ course.desc }}</li>
+            <li class="list-group-item">Description: {{ course.desc.desc }}</li>
             <li class="list-group-item">Date Added: {{ course.created_at }}</li>
         </ul>
         <a class="btn btn-primary btn-sm mt-3 btn-secondary" href="{%url 'courses:my_index' %}">No</a> 

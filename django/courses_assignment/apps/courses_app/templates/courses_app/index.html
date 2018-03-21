@@ -61,7 +61,7 @@
                 <tr>
     
                     <td>{{ course.name }}</td>
-                    <td>{{ course.email }}</td>
+                    <td>{{ course.desc.desc }}</td>
                     <td>{{ course.created_at }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="{%url 'courses:my_delete' course.id %}">remove</a>

@@ -16,14 +16,18 @@ class CourseManager(models.Manager):
     
         return errors
 
+    # def create_course(self, new_name, new_desc):
+    #     course = self.create(name=new_name, desc=new_desc)
+    #     return course
 
-    def create_course(self, new_name, new_desc):
-        course = self.create(name=new_name, desc=new_desc)
-        return course
-        
+
+class Description(models.Model):
+	desc = models.TextField()
+
+       
 class Course(models.Model):
     name = models.CharField(max_length=255)
-    desc = models.CharField(max_length=255)
+    desc = models.OneToOneField(Description)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     # *************************
