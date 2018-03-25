@@ -28,6 +28,20 @@
 
         <h1 class="ml-3">User {{ user.first_name }} {{ user.last_name }}</h1>
 
+        {% if messages %}
+        <div id="successes">
+            <ul class="messages">
+                {% for message in messages %}
+                    {% if "success" in message.tags %}
+                    <li  class="text-success">
+                    {{ message }}
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
         <dl class="row">
             <dt class="col-sm-3">Registered on:</dt>
             <dd class="col-sm-9">{{ user.created_at }}</dd>
