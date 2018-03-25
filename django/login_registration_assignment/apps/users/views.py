@@ -25,14 +25,6 @@ def register (request):
             messages.error(request, error, extra_tags=tag)
          # return to index page with errors
 
-        # figure out what is stored in messages...
-       
-        print "type of messages = ", type(messages)
-
-        for dic in messages:
-            for key in dic:
-                print dic[key]
-
         return redirect(reverse('users:my_index')) 
 
     else:

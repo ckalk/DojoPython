@@ -70,7 +70,7 @@ class UserManager(models.Manager):
         if len(postData['password']) < 1:
             errors["password login"] = "You must enter your password"
         elif not bcrypt.checkpw(postData['password'].encode(), self.get(email = postData['email']).password.encode()):
-             errors["password login"] = "Incorrect password"
+             errors["password login"] = "Incorrect email/password combination"
 
         return errors
 
