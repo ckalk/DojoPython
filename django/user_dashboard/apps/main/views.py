@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 
 # import object Class(es) from models.py
-from .models import *
+from ..users.models import *
 
 # import messages to use flask error messaging
 from django.contrib import messages
